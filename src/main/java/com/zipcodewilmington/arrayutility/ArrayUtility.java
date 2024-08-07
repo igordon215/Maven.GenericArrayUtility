@@ -40,7 +40,27 @@ public class ArrayUtility<T> {
     }
 
     public T getMostCommonFromMerge(T[] arrayToMerge) {
-        return null;
+        Map<T, Integer> frequencyMap = new HashMap<>();
+
+        for (T element : inputArray) {
+            frequencyMap.put(element, frequencyMap.getOrDefault(element, 0) + 1);
+        }
+
+        for (T element : arrayToMerge) {
+            frequencyMap.put(element, frequencyMap.getOrDefault(element, 0) + 1);
+        }
+
+        T mostCommon = null;
+        int maxFrequency = 0;
+
+        for (Map.Entry<T, Integer> entry : frequencyMap.entrySet()) {
+            if (entry.getValue() > maxFrequency) {
+                maxFrequency = entry.getValue();
+                mostCommon = entry.getKey();
+            }
+        }
+
+        return mostCommon;
     }
 
     public Integer countDuplicatesInMerge(T[] arrayToMerge, T valueToEvaluate) {
