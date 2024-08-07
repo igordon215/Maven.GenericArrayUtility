@@ -30,7 +30,13 @@ public class ArrayUtility<T> {
     }
 
     public Integer getNumberOfOccurrences(T valueToEvaluate) {
-        return null;
+        int count = 0;
+        for (T element : inputArray) {
+            if (element != null && element.equals(valueToEvaluate)) {
+                count++;
+            }
+        }
+        return count;
     }
 
     public T getMostCommonFromMerge(T[] arrayToMerge) {
