@@ -1,22 +1,43 @@
 package com.zipcodewilmington.arrayutility;
 
+import java.util.*;
+
 /**
  * Created by leon on 3/6/18.
  */
-public class ArrayUtility {
-    public Long[] removeValue(Long valueToRemove) {
+public class ArrayUtility<T> {
+
+    public T[] inputArray;
+
+    public ArrayUtility(T[] inputArray) {
+        this.inputArray = inputArray;
+    }
+
+
+    public T[] removeValue(T valueToRemove) {
+        if (valueToRemove == null) {
+            return Arrays.copyOf(inputArray, inputArray.length);
+        }
+
+        List<T> resultList = new ArrayList<>();
+        for (T x : inputArray) {
+            if (!valueToRemove.equals(x)) {
+                resultList.add(x);
+            }
+        }
+
+        return resultList.toArray(Arrays.copyOf(inputArray, 0));
+    }
+
+    public Integer getNumberOfOccurrences(T valueToEvaluate) {
         return null;
     }
 
-    public Integer getNumberOfOccurrences(Long valueToEvaluate) {
+    public T getMostCommonFromMerge(T[] arrayToMerge) {
         return null;
     }
 
-    public Long getMostCommonFromMerge(Long[] arrayToMerge) {
-        return null;
-    }
-
-    public Integer countDuplicatesInMerge(String[] arrayToMerge, String valueToEvaluate) {
+    public Integer countDuplicatesInMerge(T[] arrayToMerge, T valueToEvaluate) {
         return null;
     }
 }
